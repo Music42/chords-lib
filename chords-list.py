@@ -1,6 +1,3 @@
-# See http://web.mit.edu/music21/
-# http://www.jaytomlin.com/music/settheory/help.html
-
 import collections
 from music21 import *
 
@@ -18,6 +15,8 @@ def buildChord(forte, a):
     else:
         c.addLyric(c.pitchedCommonName+'?')
 
+    c.duration.type = 'whole'
+
     return c;
 
 
@@ -29,6 +28,10 @@ for forte in ['3-5', '3-11', '7-35', '8-28']:
 dict = collections.OrderedDict(sorted(d.items(), key=lambda t: t[0]))
 
 display = stream.Stream()
+
+ts0 = meter.TimeSignature('4/4')
+display.append(ts0)
+
 
 for key, value in dict.items():
     for x in value.derivation.chain():
