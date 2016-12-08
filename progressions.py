@@ -3,7 +3,7 @@ from music21 import *
 
 s = stream.Stream()
 p = stream.Part()
-m = stream.Measure()
+
 
 s.insert(0, metadata.Metadata(
     title='Progression VI – IV – I – V',
@@ -17,10 +17,15 @@ p.append(ts0)
 #VI – IV – I – V
 for n in 'cdefgab':
     sc = scale.MajorScale(n)
-    p.append(music42.buildChord(sc.pitches[5].name, 'm'))
-    p.append(music42.buildChord(sc.pitches[4].name))
-    p.append(music42.buildChord(sc.pitches[0].name))
-    p.append(music42.buildChord(sc.pitches[4].name))
+    i = 0
+    for cho in [music42.buildChord(sc.pitches[5].name, 'm'), music42.buildChord(sc.pitches[4].name), music42.buildChord(sc.pitches[0].name), music42.buildChord(sc.pitches[4].name)]:
+        i += 1
+        m = stream.Measure()
+        if i == 1:
+            m.leftBarline = 'light-heavy'
 
+        m.append(cho)
+        p.append(m)
+    
 s.append(p)
 s.show()
