@@ -1,43 +1,42 @@
 import collections
 from music21 import *
 
-d = {}
+def buildChord(mainNote, symbol, duration = 'whole'):
+    n1 = note.Note('C4')
 
-def buildChord(forte, a):
-    c = chord.fromForteClass(forte)
+    if symbol == 'm':
+        n2 = note.Note('E-4')
+        n3 = note.Note('G4')
+        n4 = note.Note('B-4')
+    elif symbol == 'm(b5)':
+        n2 = note.Note('E-4')
+        n3 = note.Note('G-4')
+        n4 = note.Note('B-4')
+    elif symbol == '7':
+        n2 = note.Note('E4')
+        n3 = note.Note('G4')
+        n4 = note.Note('B-4')
+    else:
+        n2 = note.Note('E4')
+        n3 = note.Note('G4')
+        n4 = note.Note('B4')
+
+    n5 = note.Note('C5')
+    c = chord.Chord([n1, n2, n3, n4, n5])
+
+    a = buildInterval('C', mainNote)
     if a is not None:
         c.transpose(a, True)
 
-    if c.isMajorTriad():
-        mode = "M"
-    elif c.isMinorTriad():
-        mode = "m"
-    else:
-        mode = ""
+    c.addLyric(mainNote.replace('-', 'b')+symbol)
+    c.duration.type = duration
 
-    legend = c.pitchedCommonName.replace('--', 'b ').replace('-', ' ')+' '+mode
-    #c.fullName
-    c.addLyric(legend)
-    c.duration.type = 'whole'
-
-    return c;
+    return c
 
 def buildInterval(fromNote, toNote):
     dc = note.Note(fromNote)
     pc = note.Note(toNote)
     return interval.Interval(dc, pc)
-
-for mainNote in ['c', 'c#','d', 'd#', 'e-', 'e', 'f', 'f#', 'g', 'g#', 'a-', 'a', 'a#', 'b-', 'b', 'c-']:
-    sc = scale.ChromaticScale(mainNote+'3')
-    for direction in ['ascending', 'descending']:
-        for p in sc.getPitches(mainNote+'3', mainNote+'4', direction=direction):
-            i = buildInterval(mainNote+'3', p)
-            #'8-28'
-            for forte in ['3-5', '3-11', '7-35']:
-                c = buildChord(forte, i)
-                d[c.fullName] = c
-
-dict = collections.OrderedDict(sorted(d.items(), key=lambda t: t[0]))
 
 s = stream.Stream()
 p = stream.Part()
@@ -45,7 +44,7 @@ m = stream.Measure()
 
 s.insert(0, metadata.Metadata())
 s.metadata.title = 'Chords Lib'
-s.metadata.composer = 'music42'
+s.metadata.composer = '@Music42'
 
 p.insert(0, metadata.Metadata())
 p.metadata.title = 'List'
@@ -53,10 +52,9 @@ p.metadata.title = 'List'
 ts0 = meter.TimeSignature('4/4')
 p.append(ts0)
 
-for key, value in dict.items():
-    p.append(value);
-    for x in value.derivation.chain():
-        p.append(x);
+for mainNote in ['C', 'C#', 'D-', 'D', 'D#', 'E-', 'E', 'F', 'F#', 'G-', 'G', 'G#', 'A-', 'A', 'A#', 'B-', 'B']:
+    for tp in ['', 'm', 'm(b5)', '7']:
+        p.append(buildChord(mainNote, tp))
 
 s.append(p)
 s.show()
