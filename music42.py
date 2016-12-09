@@ -1,4 +1,5 @@
 from music21 import *
+import sys, os
 
 def buildChord(mainNote, symbol = '', duration = 'whole'):
     n1 = note.Note('C4')
@@ -36,3 +37,12 @@ def buildInterval(fromNote, toNote):
     dc = note.Note(fromNote)
     pc = note.Note(toNote)
     return interval.Interval(dc, pc)
+
+def saveToXml(t, s):
+    GEX = musicxml.m21ToXml.GeneralObjectExporter(s)
+    out = GEX.parse()
+    outStr = out.decode('utf-8')
+    file_ = open(t, 'w')
+    file_.write(outStr.strip())
+    file_.close()
+    return True
