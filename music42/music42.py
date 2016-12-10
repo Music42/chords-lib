@@ -79,6 +79,8 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
     ts0 = meter.TimeSignature(timeSignature)
     p.append(ts0)
 
+    s.insert(0, tempo.MetronomeMark(number=120))
+
     data = {
         's': s,
         'p': p,
@@ -93,13 +95,18 @@ def show(sheet):
 def builMeasure():
     return stream.Measure()
 
-def appendChords(sheet, data, grau = '', duration = 'whole'):
-
-    for t in grau.split('-'):
+def appendChords(sheet, data, grau = ''):
+    for t in grau.strip().split('-'):
         m = builMeasure()
         block = t.strip().split(' ')
-        print(len(block))
-        continue
+        l = len(block)
+        if 2 == l:
+            duration = 'half'
+        else:
+            duration = 'whole'
+
+        print(t+":"+str(l)+" duration:"+duration)
+
         for g in block:
             c = data[g]
             c.duration.type = duration
