@@ -1,11 +1,14 @@
 from music21 import *
-import sys, os
+import sys, os, copy
 
 dict = {
     'commonNotes': 'cdefgab',
     'chromaticNotes': 'C C# D- D D# E- E F F# G- G G# A- A A# B- B'.split(' '),
     'graus': 'I II III IV V VI VII VIII'.split(' ')
 }
+
+def debug(s):
+    print(s)
 
 def buildChord(mainNote, symbol = '', duration = 'whole'):
     n1 = note.Note('C4')
@@ -105,10 +108,8 @@ def appendChords(sheet, data, grau = ''):
         else:
             duration = 'whole'
 
-        print(t+":"+str(l)+" duration:"+duration)
-
         for g in block:
-            c = data[g]
+            c = copy.deepcopy(data[g])
             c.duration.type = duration
             m.append(c)
         sheet['p'].append(m)
