@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-import music42
+from music42 import music42
 from music21 import *
 
 sheet = music42.buildSheet('4/4','Chords Lib')
