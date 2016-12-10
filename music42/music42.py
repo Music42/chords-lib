@@ -89,3 +89,18 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
 def show(sheet):
     sheet['s'].append(sheet['p'])
     sheet['s'].show()
+
+def builMeasure():
+    return stream.Measure()
+
+def appendChords(sheet, data, grau = '', duration = 'whole'):
+
+    for t in grau.split('-'):
+        m = builMeasure()
+        for g in t.strip().split(' '):
+            c = data[g]
+            c.duration.type = duration
+            m.append(c)
+        sheet['p'].append(m)
+
+    return sheet
