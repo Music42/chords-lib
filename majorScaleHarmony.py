@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import music42
 from music21 import *
 

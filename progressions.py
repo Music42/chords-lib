@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import music42
 from music21 import *
 
@@ -15,5 +16,5 @@ for n in music42.dict['commonNotes']:
 
         m.append(cho)
         sheet['p'].append(m)
-        
+
 music42.show(sheet)
