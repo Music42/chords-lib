@@ -3,6 +3,7 @@ import sys, os
 
 dict = {
     'commonNotes': 'cdefgab',
+    'chromaticNotes': 'C C# D- D D# E- E F F# G- G G# A- A A# B- B'.split(' '),
     'graus': 'I II III IV V VI VII VIII'.split(' ')
 }
 
