@@ -1,25 +1,12 @@
 import music42
 from music21 import *
 
-s = stream.Stream()
-p = stream.Part()
+sheet = music42.buildSheet('4/4','Progression VI – IV – I – V')
 
-
-s.insert(0, metadata.Metadata(
-    title='Progression VI – IV – I – V',
-    popularTitle='',
-    composer='@Music42',
-))
-
-ts0 = meter.TimeSignature('4/4')
-p.append(ts0)
-
-
-#VI – IV – I – V
-for n in 'cdefgab':
+for n in music42.dict['commonNotes']:
     data = music42.getHarmonyForMajorScale(n)
     i = 0
-    for g in ['VI', 'IV', 'I', 'V']:
+    for g in 'VI IV I V'.split(" "):
         cho = data[g]
         i += 1
         m = stream.Measure()
@@ -27,7 +14,6 @@ for n in 'cdefgab':
             m.leftBarline = 'light-heavy'
 
         m.append(cho)
-        p.append(m)
-
-s.append(p)
-s.show()
+        sheet['p'].append(m)
+        
+music42.show(sheet)
