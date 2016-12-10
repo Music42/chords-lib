@@ -57,6 +57,7 @@ def saveToXml(t, s):
     return True
 
 def getHarmonyForMajorScale(n):
+    global dict
     sc = scale.MajorScale(n)
     data = {}
     data['I'] = buildChord(sc.pitches[0].name)
@@ -67,6 +68,14 @@ def getHarmonyForMajorScale(n):
     data['VI'] = buildChord(sc.pitches[5].name, 'm')
     data['VII'] = buildChord(sc.pitches[6].name, 'b5')
     data['VIII'] = buildChord(sc.pitches[7].name)
+
+    pitches = {}
+    i = 0
+    for r in dict['graus']:
+        pitches[r] = sc.pitches[i].name
+        i += 1
+
+    data['pitches'] = pitches
 
     return data
 
@@ -98,20 +107,49 @@ def show(sheet):
 def builMeasure():
     return stream.Measure()
 
+def buildPrepareForChord(note, dn):
+    duration = getDurationByNumber((dn*2))
+    data = getHarmonyForMajorScale(note)
+    #TODO: II deve ser m7 e V deve ser 7
+    return {
+        'II': copyChord(data, 'II', duration),
+        'V': copyChord(data, 'V', duration),
+    }
+
+def copyChord(data, grau, duration):
+    c = copy.deepcopy(data[grau])
+    c.duration.type = duration
+    return c
+
+def getDurationByNumber(dn):
+    durations = {
+        '1' : 'whole',
+        '2' : 'half',
+        '4' : 'quarter'
+    }
+
+    return durations[str(dn).strip('.0')]
+
 def appendChords(sheet, data, grau = ''):
+
     for t in grau.strip().split('-'):
         m = builMeasure()
         block = t.strip().split(' ')
-        l = len(block)
-        if 2 == l:
-            duration = 'half'
-        else:
-            duration = 'whole'
+        dn = len(block)
+
+        duration = getDurationByNumber(dn)
 
         for g in block:
-            c = copy.deepcopy(data[g])
-            c.duration.type = duration
-            m.append(c)
+            if g[0] == 'p':
+                grau = g.strip('p')
+                note = data['pitches'][grau]
+                pd = buildPrepareForChord(note, dn)
+                m.append(pd['II'])
+                m.append(pd['V'])
+            else:
+                c = copy.deepcopy(data[g])
+                c.duration.type = duration
+                m.append(c)
         sheet['p'].append(m)
 
     return sheet
