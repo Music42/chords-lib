@@ -1,5 +1,6 @@
 from music21 import *
 import sys, os, copy
+from collections import *
 
 dict = {
     'commonNotes': 'cdefgab',
@@ -11,27 +12,27 @@ def debug(s):
     print(s)
 
 def buildChord(mainNote, symbol = '', duration = 'whole'):
-    n1 = note.Note('C4')
-
-    if symbol == 'm':
-        n2 = note.Note('E-4')
-        n3 = note.Note('G4')
-        n4 = note.Note('B-4')
+    l = deque([note.Note('C4')])
+    if symbol == 'm' or symbol == 'm7':
+        l.append(note.Note('E-4'))
+        l.append(note.Note('G4'))
+        if symbol == 'm7':
+            l.append(note.Note('B-4'))
     elif symbol == 'm(b5)':
-        n2 = note.Note('E-4')
-        n3 = note.Note('G-4')
-        n4 = note.Note('B-4')
+        l.append(note.Note('E-4'))
+        l.append(note.Note('G-4'))
+        l.append(note.Note('B-4'))
     elif symbol == '7':
-        n2 = note.Note('E4')
-        n3 = note.Note('G4')
-        n4 = note.Note('B-4')
+        l.append(note.Note('E4'))
+        l.append(note.Note('G4'))
+        l.append(note.Note('B-4'))
     else:
-        n2 = note.Note('E4')
-        n3 = note.Note('G4')
-        n4 = note.Note('B4')
+        l.append(note.Note('E4'))
+        l.append(note.Note('G4'))
+        l.append(note.Note('B4'))
 
-    n5 = note.Note('C5')
-    c = chord.Chord([n1, n2, n3, n4, n5])
+    l.append(note.Note('C5'))
+    c = chord.Chord(l)
 
     a = buildInterval('C', mainNote)
     if a is not None:
@@ -68,7 +69,6 @@ def getHarmonyForMajorScale(n):
     data['VI'] = buildChord(sc.pitches[5].name, 'm')
     data['VII'] = buildChord(sc.pitches[6].name, 'b5')
     data['VIII'] = buildChord(sc.pitches[7].name)
-
     pitches = {}
     i = 0
     for r in dict['graus']:
@@ -82,7 +82,6 @@ def getHarmonyForMajorScale(n):
 def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music42', popularTitle=''):
     s= stream.Stream()
     p= stream.Part()
-
     s.insert(0, metadata.Metadata(
         title=title,
         popularTitle=popularTitle,
@@ -90,14 +89,11 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
     ))
     ts0 = meter.TimeSignature(timeSignature)
     p.append(ts0)
-
     s.insert(0, tempo.MetronomeMark(number=120))
-
     data = {
         's': s,
         'p': p,
     }
-
     return data
 
 def show(sheet):
@@ -110,10 +106,9 @@ def builMeasure():
 def buildPrepareForChord(note, dn):
     duration = getDurationByNumber((dn*2))
     data = getHarmonyForMajorScale(note)
-    #TODO: II deve ser m7 e V deve ser 7
     return {
-        'II': copyChord(data, 'II', duration),
-        'V': copyChord(data, 'V', duration),
+        'II': buildChord(data['pitches']['II'], 'm7', duration),
+        'V': buildChord(data['pitches']['V'], '7', duration),
     }
 
 def copyChord(data, grau, duration):
@@ -127,16 +122,13 @@ def getDurationByNumber(dn):
         '2' : 'half',
         '4' : 'quarter'
     }
-
     return durations[str(dn).strip('.0')]
 
 def appendChords(sheet, data, grau = ''):
-
     for t in grau.strip().split('-'):
         m = builMeasure()
         block = t.strip().split(' ')
         dn = len(block)
-
         duration = getDurationByNumber(dn)
 
         for g in block:
