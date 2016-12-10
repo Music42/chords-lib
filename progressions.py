@@ -14,11 +14,13 @@ s.insert(0, metadata.Metadata(
 ts0 = meter.TimeSignature('4/4')
 p.append(ts0)
 
+
 #VI – IV – I – V
 for n in 'cdefgab':
-    sc = scale.MajorScale(n)
+    data = music42.getHarmonyForMajorScale(n)
     i = 0
-    for cho in [music42.buildChord(sc.pitches[5].name, 'm'), music42.buildChord(sc.pitches[4].name), music42.buildChord(sc.pitches[0].name), music42.buildChord(sc.pitches[4].name)]:
+    for g in ['VI', 'IV', 'I', 'V']:
+        cho = data[g]
         i += 1
         m = stream.Measure()
         if i == 1:
@@ -26,6 +28,6 @@ for n in 'cdefgab':
 
         m.append(cho)
         p.append(m)
-    
+
 s.append(p)
 s.show()

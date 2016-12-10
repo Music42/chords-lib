@@ -46,3 +46,17 @@ def saveToXml(t, s):
     file_.write(outStr.strip())
     file_.close()
     return True
+
+
+def getHarmonyForMajorScale(n):
+    sc = scale.MajorScale(n)
+    data = {}
+    data['I'] = buildChord(sc.pitches[0].name)
+    data['II'] = buildChord(sc.pitches[1].name, 'm')
+    data['III'] = buildChord(sc.pitches[2].name, 'm')
+    data['IV'] = buildChord(sc.pitches[3].name)
+    data['V'] = buildChord(sc.pitches[4].name)
+    data['VI'] = buildChord(sc.pitches[5].name, 'm')
+    data['VII'] = buildChord(sc.pitches[6].name, 'b5')
+
+    return data

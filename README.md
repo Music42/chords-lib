@@ -1,7 +1,7 @@
 # Music21 library
 
 ## Configure
-
+ `pip3 install music21`
  `python3 -m music21.configure`
 
 
