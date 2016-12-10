@@ -97,7 +97,10 @@ def appendChords(sheet, data, grau = '', duration = 'whole'):
 
     for t in grau.split('-'):
         m = builMeasure()
-        for g in t.strip().split(' '):
+        block = t.strip().split(' ')
+        print(len(block))
+        continue
+        for g in block:
             c = data[g]
             c.duration.type = duration
             m.append(c)
