@@ -7,17 +7,19 @@ sheet = music42.buildSheet('4/4','Deus Está Aqui')
 i = 1
 tons = 'DEFGABC'
 for n in tons:
-#for n in 'D':
-    sheet = music42.addKeySignature(sheet, n)
     data = music42.getHarmonyForMajorScale(n)
     sheet = music42.appendChords(sheet, data, '|I V - VI - IV V - I pIV - IV V - III VI - II V - I V ..|')
-    i +=1
-    if i != len(tons):
+
+    if i < len(tons):
         m = music42.builMeasure()
         pd = music42.buildPrepareForChord(data['pitches']['II'])
+        pd['II'].color = '#235409'
+        pd['V'].color = '#235409'
         m.append(pd['II'])
         m.append(pd['V'])
         sheet['p'].append(m)
+
+    i +=1
 
 
 music42.show(sheet)

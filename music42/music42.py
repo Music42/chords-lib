@@ -138,8 +138,16 @@ def addKeySignature(sheet, n):
 
 def appendChords(sheet, data, grau = ''):
 
-    for t in grau.strip().split('-'):
+    o = 0
+    li = grau.strip().split('-')
+    for t in li:
+        o += 1
         m = builMeasure()
+
+        # Key Signature
+        if o == 1:
+            m.insert(0, key.Key(data['pitches']['I']))
+
         raw = t.strip()
         block= ''.join(c for c in raw if c not in '.|').strip().split(' ')
         if raw.startswith('|'):
@@ -165,6 +173,9 @@ def appendChords(sheet, data, grau = ''):
                 c = copy.deepcopy(data[g])
                 c.duration.type = duration
                 m.append(c)
+        #new line
+        #if o == len(li):
+            #m.append("\n")
         sheet['p'].append(m)
 
     return sheet
