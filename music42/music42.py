@@ -1,5 +1,5 @@
 from music21 import *
-import sys, os, copy
+import sys, os, copy, re
 from collections import *
 
 dict = {
@@ -89,7 +89,10 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
     ))
     ts0 = meter.TimeSignature(timeSignature)
     p.append(ts0)
-    s.insert(0, tempo.MetronomeMark(number=120))
+
+    mm = tempo.MetronomeMark('slow')
+    p.append(mm)
+
     data = {
         's': s,
         'p': p,
@@ -98,12 +101,13 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
 
 def show(sheet):
     sheet['s'].append(sheet['p'])
+    sheet['s'].makeNotation()
     sheet['s'].show()
 
 def builMeasure():
     return stream.Measure()
 
-def buildPrepareForChord(note, dn):
+def buildPrepareForChord(note, dn = 1):
     duration = getDurationByNumber((dn*2))
     data = getHarmonyForMajorScale(note)
     return {
@@ -124,13 +128,32 @@ def getDurationByNumber(dn):
     }
     return durations[str(dn).strip('.0')]
 
+def addKeySignature(sheet, n):
+    try:
+        k = key.Key(n)
+        sheet['p'][-1].insert(0, k)
+    except AttributeError:
+        sheet['p'].append(key.KeySignature(key.pitchToSharps(n)))
+    return sheet
+
 def appendChords(sheet, data, grau = ''):
+
     for t in grau.strip().split('-'):
         m = builMeasure()
-        block = t.strip().split(' ')
-        dn = len(block)
-        duration = getDurationByNumber(dn)
+        raw = t.strip()
+        block= ''.join(c for c in raw if c not in '.|').strip().split(' ')
+        if raw.startswith('|'):
+            m.leftBarline = bar.Repeat(direction='start')
 
+        if raw.endswith('|'):
+            times = raw.count('.')
+            if times < 1:
+                times = 1
+            m.rightBarline = bar.Repeat(direction='end', times=times)
+
+        dn = len(block)
+
+        duration = getDurationByNumber(dn)
         for g in block:
             if g[0] == 'p':
                 grau = g.strip('p')
