@@ -9,7 +9,7 @@ i = 1
 tons = 'DEFGABC'
 for n in tons:
     data = music42.getHarmonyForMajorScale(n)
-    sheet = music42.appendChords(sheet, data, '|I V - VI - IV V - I pIV - IV V - III VI - II V - I V ..|')
+    music42.appendChords(sheet, data, '|I V - VI - IV V - I pIV - IV V - III VI - II V - I V ..|')
     music42.custom['color'] = random.choice(colors);
     if i < len(tons):
         m = music42.builMeasure()
@@ -23,6 +23,5 @@ for n in tons:
         sheet['p'].append(m)
 
     i +=1
-
 
 music42.show(sheet)

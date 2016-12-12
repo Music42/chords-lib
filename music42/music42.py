@@ -23,10 +23,11 @@ def buildChord(mainNote, symbol = '', duration = 'whole'):
         l.append(note.Note('G4'))
         if symbol == 'm7':
             l.append(note.Note('B-4'))
-    elif symbol == 'm(b5)':
+    elif symbol == 'm(b5)' or symbol == 'm(b5)7':
         l.append(note.Note('E-4'))
         l.append(note.Note('G-4'))
-        l.append(note.Note('B-4'))
+        if symbol == 'm(b5)7':
+            l.append(note.Note('B-4'))
     elif symbol == '7':
         l.append(note.Note('E4'))
         l.append(note.Note('G4'))
@@ -34,7 +35,8 @@ def buildChord(mainNote, symbol = '', duration = 'whole'):
     elif symbol == '7M' or symbol == '':
         l.append(note.Note('E4'))
         l.append(note.Note('G4'))
-        l.append(note.Note('B4'))
+        if symbol == '7M':
+            l.append(note.Note('B4'))
 
     l.append(note.Note('C5'))
     c = chord.Chord(l)
@@ -64,33 +66,53 @@ def saveToXml(t, s):
     file_.close()
     return True
 
-def getHarmonyForMajorScale(n, add7 = None):
-    global dict
-
-    sm = ''
-    SM = ''
+def calc7(add7):
+    l = {
+        'm': '',
+        'M': '',
+    }
     if add7 is not None:
-        sm = '7'
-        SM = '7M'
+        l['m'] = '7'
+        l['M'] = '7M'
+    return l
 
-    sc = scale.MajorScale(n)
-    data = {}
-    data['I'] = buildChord(sc.pitches[0].name, SM)
-    data['II'] = buildChord(sc.pitches[1].name, 'm'+sm)
-    data['III'] = buildChord(sc.pitches[2].name, 'm'+sm)
-    data['IV'] = buildChord(sc.pitches[3].name, sm)
-    data['V'] = buildChord(sc.pitches[4].name, sm)
-    data['VI'] = buildChord(sc.pitches[5].name, 'm'+sm)
-    data['VII'] = buildChord(sc.pitches[6].name, 'b5')
-    data['VIII'] = buildChord(sc.pitches[7].name, sm)
+def buildPitchesForScale(sc):
+    global dict
     pitches = {}
     i = 0
     for r in dict['graus']:
         pitches[r] = sc.pitches[i].name
         i += 1
+    return pitches
 
-    data['pitches'] = pitches
+def getHarmonyForMajorScale(n, add7 = None):
+    l = calc7(add7)
+    sc = scale.MajorScale(n)
+    data = {}
+    data['I'] = buildChord(sc.pitches[0].name, l['M'])
+    data['II'] = buildChord(sc.pitches[1].name, 'm'+l['m'])
+    data['III'] = buildChord(sc.pitches[2].name, 'm'+l['m'])
+    data['IV'] = buildChord(sc.pitches[3].name, l['M'])
+    data['V'] = buildChord(sc.pitches[4].name, l['m'])
+    data['VI'] = buildChord(sc.pitches[5].name, 'm'+l['m'])
+    data['VII'] = buildChord(sc.pitches[6].name, 'm(b5)'+l['m'])
+    data['VIII'] = buildChord(sc.pitches[7].name, l['m'])
+    data['pitches'] = buildPitchesForScale(sc)
+    return data
 
+def getHarmonyForMinorScale(n, add7 = None):
+    l = calc7(add7)
+    sc = scale.MinorScale(n)
+    data = {}
+    data['I'] = buildChord(sc.pitches[0].name, 'm'+l['m'])
+    data['II'] = buildChord(sc.pitches[1].name, 'm(b5)'+l['m'])
+    data['III'] = buildChord(sc.pitches[2].name, l['M'])
+    data['IV'] = buildChord(sc.pitches[3].name, 'm'+l['m'])
+    data['V'] = buildChord(sc.pitches[4].name, 'm'+l['m'])
+    data['VI'] = buildChord(sc.pitches[5].name, l['M'])
+    data['VII'] = buildChord(sc.pitches[6].name, l['m'])
+    data['VIII'] = buildChord(sc.pitches[7].name, l['M'])
+    data['pitches'] = buildPitchesForScale(sc)
     return data
 
 def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music42', popularTitle=''):
@@ -104,7 +126,7 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
     ts0 = meter.TimeSignature(timeSignature)
     p.append(ts0)
 
-    mm = tempo.MetronomeMark('slow')
+    mm = tempo.MetronomeMark('90')
     p.append(mm)
 
     data = {

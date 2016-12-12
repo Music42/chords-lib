@@ -7,7 +7,6 @@ sheet = music42.buildSheet('4/4','Progressão I - VI - II - V', time.strftime("%
 
 for n in music42.circleOfFifths('C', 6):
     data = music42.getHarmonyForMajorScale(n.strip('#'), True)
-    sheet = music42.appendChords(sheet, data, '|I - VI - II - V|')
-
+    music42.appendChords(sheet, data, '|I - VI - II - V|')
 
 music42.show(sheet)

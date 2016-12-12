@@ -5,7 +5,7 @@ from music21 import *
 sheet = music42.buildSheet('4/4','Chords Lib')
 
 for mainNote in music42.dict['chromaticNotes']:
-    for tp in ['', 'm', 'm(b5)', '7']:
+    for tp in ['', 'm', 'm(b5)', '7M', '7', 'm(b5)7']:
         sheet['p'].append(music42.buildChord(mainNote, tp))
 
 music42.show(sheet)
