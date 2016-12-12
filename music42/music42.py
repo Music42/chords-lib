@@ -2,6 +2,10 @@ from music21 import *
 import sys, os, copy, re
 from collections import *
 
+custom = {
+    'color': '#000000'
+}
+
 dict = {
     'commonNotes': 'cdefgab',
     'chromaticNotes': 'C C# D- D D# E- E F F# G- G G# A- A A# B- B'.split(' '),
@@ -12,6 +16,7 @@ def debug(s):
     print(s)
 
 def buildChord(mainNote, symbol = '', duration = 'whole'):
+    global custom
     l = deque([note.Note('C4')])
     if symbol == 'm' or symbol == 'm7':
         l.append(note.Note('E-4'))
@@ -40,6 +45,8 @@ def buildChord(mainNote, symbol = '', duration = 'whole'):
 
     c.addLyric(mainNote.replace('-', 'b')+symbol)
     c.duration.type = duration
+
+    c.color = custom['color']
 
     return c
 
@@ -137,7 +144,7 @@ def addKeySignature(sheet, n):
     return sheet
 
 def appendChords(sheet, data, grau = ''):
-
+    global custom
     o = 0
     li = grau.strip().split('-')
     for t in li:
@@ -146,7 +153,9 @@ def appendChords(sheet, data, grau = ''):
 
         # Key Signature
         if o == 1:
-            m.insert(0, key.Key(data['pitches']['I']))
+            nk = key.Key(data['pitches']['I'])
+            nk.color = custom['color']
+            m.insert(0, nk)
 
         raw = t.strip()
         block= ''.join(c for c in raw if c not in '.|').strip().split(' ')
