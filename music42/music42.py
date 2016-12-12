@@ -31,7 +31,7 @@ def buildChord(mainNote, symbol = '', duration = 'whole'):
         l.append(note.Note('E4'))
         l.append(note.Note('G4'))
         l.append(note.Note('B-4'))
-    else:
+    elif symbol == '7M' or symbol == '':
         l.append(note.Note('E4'))
         l.append(note.Note('G4'))
         l.append(note.Note('B4'))
@@ -64,18 +64,25 @@ def saveToXml(t, s):
     file_.close()
     return True
 
-def getHarmonyForMajorScale(n):
+def getHarmonyForMajorScale(n, add7 = None):
     global dict
+
+    sm = ''
+    SM = ''
+    if add7 is not None:
+        sm = '7'
+        SM = '7M'
+
     sc = scale.MajorScale(n)
     data = {}
-    data['I'] = buildChord(sc.pitches[0].name)
-    data['II'] = buildChord(sc.pitches[1].name, 'm')
-    data['III'] = buildChord(sc.pitches[2].name, 'm')
-    data['IV'] = buildChord(sc.pitches[3].name)
-    data['V'] = buildChord(sc.pitches[4].name)
-    data['VI'] = buildChord(sc.pitches[5].name, 'm')
+    data['I'] = buildChord(sc.pitches[0].name, SM)
+    data['II'] = buildChord(sc.pitches[1].name, 'm'+sm)
+    data['III'] = buildChord(sc.pitches[2].name, 'm'+sm)
+    data['IV'] = buildChord(sc.pitches[3].name, sm)
+    data['V'] = buildChord(sc.pitches[4].name, sm)
+    data['VI'] = buildChord(sc.pitches[5].name, 'm'+sm)
     data['VII'] = buildChord(sc.pitches[6].name, 'b5')
-    data['VIII'] = buildChord(sc.pitches[7].name)
+    data['VIII'] = buildChord(sc.pitches[7].name, sm)
     pitches = {}
     i = 0
     for r in dict['graus']:
@@ -188,3 +195,17 @@ def appendChords(sheet, data, grau = ''):
         sheet['p'].append(m)
 
     return sheet
+
+def circleOfFifths(n = 'C', c = 7):
+    i = 1
+    edgeList = []
+    while i <= c:
+        edgeList.append('P5')
+        i += 1
+
+    net5ths = scale.intervalNetwork.IntervalNetwork()
+    net5ths.fillBiDirectedEdges(edgeList)
+    l = deque([])
+    for p in net5ths.realizePitch(pitch.Pitch(n)):
+        l.append(p.name)
+    return l
