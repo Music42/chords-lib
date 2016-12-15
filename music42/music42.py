@@ -115,7 +115,7 @@ def getHarmonyForMinorScale(n, add7 = None):
     data['pitches'] = buildPitchesForScale(sc)
     return data
 
-def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music42', popularTitle=''):
+def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music42', popularTitle='', metronomeMark = 90):
     s= stream.Stream()
     p= stream.Part()
     s.insert(0, metadata.Metadata(
@@ -126,7 +126,7 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
     ts0 = meter.TimeSignature(timeSignature)
     p.append(ts0)
 
-    mm = tempo.MetronomeMark('90')
+    mm = tempo.MetronomeMark(metronomeMark)
     p.append(mm)
 
     data = {
