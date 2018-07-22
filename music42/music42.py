@@ -43,7 +43,7 @@ def buildChord(mainNote, symbol = '', duration = 'whole'):
 
     a = buildInterval('C', mainNote)
     if a is not None:
-        c.transpose(a, True)
+        c.transpose(a, inPlace=True)
 
     c.addLyric(mainNote.replace('-', 'b')+symbol)
     c.duration.type = duration

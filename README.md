@@ -1,9 +1,18 @@
-# Music21 library
+# Chords Lib using Music21 library
+
+## Require
+
+python >= 3.7
 
 ## Configure
- `pip3 install music21`
- `python3 -m music21.configure`
 
+pip install music21
+python -m music21.configure
+
+pillow
+numpy
+matplotlib
+scipy
 
 ## See
 

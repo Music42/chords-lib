@@ -1,0 +1,7 @@
+version: '2'
+services:
+    python:
+        container_name: python
+        image: gpupo/container-orchestration:python-v1.4.11
+        volumes:
+            - ./:/usr/src/app
