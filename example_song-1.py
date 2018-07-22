@@ -3,7 +3,7 @@ from music42 import music42
 from music21 import *
 import random
 
-sheet = music42.buildSheet('4/4','Deus Está Aqui')
+sheet = music42.buildSheet('4/4','Deus Está Aqui', 'Canção Popular')
 colors= ['#212F3C', '#AF601A', '#4A235A', '#9A7D0A']
 i = 1
 tons = 'DEFGABC'
@@ -23,5 +23,6 @@ for n in tons:
         sheet['p'].append(m)
 
     i +=1
+
 
 music42.show(sheet)

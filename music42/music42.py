@@ -132,13 +132,15 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
     data = {
         's': s,
         'p': p,
+        'title': title,
+        'composer': composer,
     }
     return data
 
 def show(sheet):
     sheet['s'].append(sheet['p'])
     sheet['s'].makeNotation()
-    sheet['s'].show()
+    fp = sheet['s'].write('musicxml', fp="output/musicxml/%s-%s.mxl" % (sheet['composer'], sheet['title']))
 
 def builMeasure():
     return stream.Measure()
