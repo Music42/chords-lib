@@ -137,11 +137,19 @@ def buildSheet(timeSignature = '4/4', title = 'Music42 Sheet', composer='@Music4
     }
     return data
 
+def write(sheet, format, extension):
+    return sheet['s'].write(format, fp="output/%s/%s-%s.%s" % (format, sheet['composer'], sheet['title'], extension))
+
+
 def show(sheet):
     sheet['s'].append(sheet['p'])
     sheet['s'].makeNotation()
-    fp = sheet['s'].write('musicxml', fp="output/musicxml/%s-%s.mxl" % (sheet['composer'], sheet['title']))
-
+    write(sheet, 'musicxml', 'mxl')
+    write(sheet, 'vexflow', 'html')
+    write(sheet, 'capella', 'capx')
+    write(sheet, 'text', 'txt')
+    write(sheet, 'textline', 'txt')
+    
 def builMeasure():
     return stream.Measure()
 

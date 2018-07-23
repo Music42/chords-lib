@@ -9,11 +9,6 @@ python >= 3.7
 pip install music21
 python -m music21.configure
 
-pillow
-numpy
-matplotlib
-scipy
-
 ## See
 
 * http://web.mit.edu/music21/

@@ -1,0 +1,217 @@
+{0.0} <music21.metadata.Metadata object at 0x7f943432bf60>
+{0.0} <music21.stream.Part 0x7f942ae23208>
+    {0.0} <music21.stream.Measure 0 offset=0.0>
+        {0.0} <music21.bar.Repeat direction=start>
+        {0.0} <music21.key.Key of D major>
+        {0.0} <music21.chord.Chord D4 F#4 A4 D5>
+        {2.0} <music21.chord.Chord A4 C#5 E5 A5>
+    {0.0} <music21.tempo.MetronomeMark 90 Quarter=None>
+    {0.0} <music21.meter.TimeSignature 4/4>
+    {4.0} <music21.stream.Measure 0 offset=4.0>
+        {0.0} <music21.chord.Chord B4 D5 F#5 B5>
+    {8.0} <music21.stream.Measure 0 offset=8.0>
+        {0.0} <music21.chord.Chord G4 B4 D5 G5>
+        {2.0} <music21.chord.Chord A4 C#5 E5 A5>
+    {12.0} <music21.stream.Measure 0 offset=12.0>
+        {0.0} <music21.chord.Chord D4 F#4 A4 D5>
+        {2.0} <music21.chord.Chord A4 C5 E5 G5 A5>
+        {3.0} <music21.chord.Chord D4 F#4 A4 C5 D5>
+    {16.0} <music21.stream.Measure 0 offset=16.0>
+        {0.0} <music21.chord.Chord G4 B4 D5 G5>
+        {2.0} <music21.chord.Chord A4 C#5 E5 A5>
+    {20.0} <music21.stream.Measure 0 offset=20.0>
+        {0.0} <music21.chord.Chord F#4 A4 C#5 F#5>
+        {2.0} <music21.chord.Chord B4 D5 F#5 B5>
+    {24.0} <music21.stream.Measure 0 offset=24.0>
+        {0.0} <music21.chord.Chord E4 G4 B4 E5>
+        {2.0} <music21.chord.Chord A4 C#5 E5 A5>
+    {28.0} <music21.stream.Measure 0 offset=28.0>
+        {0.0} <music21.chord.Chord D4 F#4 A4 D5>
+        {2.0} <music21.chord.Chord A4 C#5 E5 A5>
+        {4.0} <music21.bar.Repeat direction=end times=2>
+    {32.0} <music21.stream.Measure 0 offset=32.0>
+        {0.0} <music21.key.Key of C major>
+        {0.0} <music21.chord.Chord F#4 A4 C#5 E5 F#5>
+        {2.0} <music21.chord.Chord B4 D#5 F#5 A5 B5>
+    {36.0} <music21.stream.Measure 0 offset=36.0>
+        {0.0} <music21.bar.Repeat direction=start>
+        {0.0} <music21.key.Key of E major>
+        {0.0} <music21.chord.Chord E4 G#4 B4 E5>
+        {2.0} <music21.chord.Chord B4 D#5 F#5 B5>
+    {40.0} <music21.stream.Measure 0 offset=40.0>
+        {0.0} <music21.chord.Chord C#4 E4 G#4 C#5>
+    {44.0} <music21.stream.Measure 0 offset=44.0>
+        {0.0} <music21.chord.Chord A4 C#5 E5 A5>
+        {2.0} <music21.chord.Chord B4 D#5 F#5 B5>
+    {48.0} <music21.stream.Measure 0 offset=48.0>
+        {0.0} <music21.chord.Chord E4 G#4 B4 E5>
+        {2.0} <music21.chord.Chord B4 D5 F#5 A5 B5>
+        {3.0} <music21.chord.Chord E4 G#4 B4 D5 E5>
+    {52.0} <music21.stream.Measure 0 offset=52.0>
+        {0.0} <music21.chord.Chord A4 C#5 E5 A5>
+        {2.0} <music21.chord.Chord B4 D#5 F#5 B5>
+    {56.0} <music21.stream.Measure 0 offset=56.0>
+        {0.0} <music21.chord.Chord G#4 B4 D#5 G#5>
+        {2.0} <music21.chord.Chord C#4 E4 G#4 C#5>
+    {60.0} <music21.stream.Measure 0 offset=60.0>
+        {0.0} <music21.chord.Chord F#4 A4 C#5 F#5>
+        {2.0} <music21.chord.Chord B4 D#5 F#5 B5>
+    {64.0} <music21.stream.Measure 0 offset=64.0>
+        {0.0} <music21.chord.Chord E4 G#4 B4 E5>
+        {2.0} <music21.chord.Chord B4 D#5 F#5 B5>
+        {4.0} <music21.bar.Repeat direction=end times=2>
+    {68.0} <music21.stream.Measure 0 offset=68.0>
+        {0.0} <music21.key.Key of C major>
+        {0.0} <music21.chord.Chord G#4 B4 D#5 F#5 G#5>
+        {2.0} <music21.chord.Chord C#4 E#4 G#4 B4 C#5>
+    {72.0} <music21.stream.Measure 0 offset=72.0>
+        {0.0} <music21.bar.Repeat direction=start>
+        {0.0} <music21.key.Key of F major>
+        {0.0} <music21.chord.Chord F4 A4 C5 F5>
+        {2.0} <music21.chord.Chord C4 E4 G4 C5>
+    {76.0} <music21.stream.Measure 0 offset=76.0>
+        {0.0} <music21.chord.Chord D4 F4 A4 D5>
+    {80.0} <music21.stream.Measure 0 offset=80.0>
+        {0.0} <music21.chord.Chord B-4 D5 F5 B-5>
+        {2.0} <music21.chord.Chord C4 E4 G4 C5>
+    {84.0} <music21.stream.Measure 0 offset=84.0>
+        {0.0} <music21.chord.Chord F4 A4 C5 F5>
+        {2.0} <music21.chord.Chord C4 E-4 G4 B-4 C5>
+        {3.0} <music21.chord.Chord F4 A4 C5 E-5 F5>
+    {88.0} <music21.stream.Measure 0 offset=88.0>
+        {0.0} <music21.chord.Chord B-4 D5 F5 B-5>
+        {2.0} <music21.chord.Chord C4 E4 G4 C5>
+    {92.0} <music21.stream.Measure 0 offset=92.0>
+        {0.0} <music21.chord.Chord A4 C5 E5 A5>
+        {2.0} <music21.chord.Chord D4 F4 A4 D5>
+    {96.0} <music21.stream.Measure 0 offset=96.0>
+        {0.0} <music21.chord.Chord G4 B-4 D5 G5>
+        {2.0} <music21.chord.Chord C4 E4 G4 C5>
+    {100.0} <music21.stream.Measure 0 offset=100.0>
+        {0.0} <music21.chord.Chord F4 A4 C5 F5>
+        {2.0} <music21.chord.Chord C4 E4 G4 C5>
+        {4.0} <music21.bar.Repeat direction=end times=2>
+    {104.0} <music21.stream.Measure 0 offset=104.0>
+        {0.0} <music21.key.Key of C major>
+        {0.0} <music21.chord.Chord A4 C5 E5 G5 A5>
+        {2.0} <music21.chord.Chord D4 F#4 A4 C5 D5>
+    {108.0} <music21.stream.Measure 0 offset=108.0>
+        {0.0} <music21.bar.Repeat direction=start>
+        {0.0} <music21.key.Key of G major>
+        {0.0} <music21.chord.Chord G4 B4 D5 G5>
+        {2.0} <music21.chord.Chord D4 F#4 A4 D5>
+    {112.0} <music21.stream.Measure 0 offset=112.0>
+        {0.0} <music21.chord.Chord E4 G4 B4 E5>
+    {116.0} <music21.stream.Measure 0 offset=116.0>
+        {0.0} <music21.chord.Chord C4 E4 G4 C5>
+        {2.0} <music21.chord.Chord D4 F#4 A4 D5>
+    {120.0} <music21.stream.Measure 0 offset=120.0>
+        {0.0} <music21.chord.Chord G4 B4 D5 G5>
+        {2.0} <music21.chord.Chord D4 F4 A4 C5 D5>
+        {3.0} <music21.chord.Chord G4 B4 D5 F5 G5>
+    {124.0} <music21.stream.Measure 0 offset=124.0>
+        {0.0} <music21.chord.Chord C4 E4 G4 C5>
+        {2.0} <music21.chord.Chord D4 F#4 A4 D5>
+    {128.0} <music21.stream.Measure 0 offset=128.0>
+        {0.0} <music21.chord.Chord B4 D5 F#5 B5>
+        {2.0} <music21.chord.Chord E4 G4 B4 E5>
+    {132.0} <music21.stream.Measure 0 offset=132.0>
+        {0.0} <music21.chord.Chord A4 C5 E5 A5>
+        {2.0} <music21.chord.Chord D4 F#4 A4 D5>
+    {136.0} <music21.stream.Measure 0 offset=136.0>
+        {0.0} <music21.chord.Chord G4 B4 D5 G5>
+        {2.0} <music21.chord.Chord D4 F#4 A4 D5>
+        {4.0} <music21.bar.Repeat direction=end times=2>
+    {140.0} <music21.stream.Measure 0 offset=140.0>
+        {0.0} <music21.key.Key of C major>
+        {0.0} <music21.chord.Chord B4 D5 F#5 A5 B5>
+        {2.0} <music21.chord.Chord E4 G#4 B4 D5 E5>
+    {144.0} <music21.stream.Measure 0 offset=144.0>
+        {0.0} <music21.bar.Repeat direction=start>
+        {0.0} <music21.key.Key of A major>
+        {0.0} <music21.chord.Chord A4 C#5 E5 A5>
+        {2.0} <music21.chord.Chord E4 G#4 B4 E5>
+    {148.0} <music21.stream.Measure 0 offset=148.0>
+        {0.0} <music21.chord.Chord F#4 A4 C#5 F#5>
+    {152.0} <music21.stream.Measure 0 offset=152.0>
+        {0.0} <music21.chord.Chord D4 F#4 A4 D5>
+        {2.0} <music21.chord.Chord E4 G#4 B4 E5>
+    {156.0} <music21.stream.Measure 0 offset=156.0>
+        {0.0} <music21.chord.Chord A4 C#5 E5 A5>
+        {2.0} <music21.chord.Chord E4 G4 B4 D5 E5>
+        {3.0} <music21.chord.Chord A4 C#5 E5 G5 A5>
+    {160.0} <music21.stream.Measure 0 offset=160.0>
+        {0.0} <music21.chord.Chord D4 F#4 A4 D5>
+        {2.0} <music21.chord.Chord E4 G#4 B4 E5>
+    {164.0} <music21.stream.Measure 0 offset=164.0>
+        {0.0} <music21.chord.Chord C#4 E4 G#4 C#5>
+        {2.0} <music21.chord.Chord F#4 A4 C#5 F#5>
+    {168.0} <music21.stream.Measure 0 offset=168.0>
+        {0.0} <music21.chord.Chord B4 D5 F#5 B5>
+        {2.0} <music21.chord.Chord E4 G#4 B4 E5>
+    {172.0} <music21.stream.Measure 0 offset=172.0>
+        {0.0} <music21.chord.Chord A4 C#5 E5 A5>
+        {2.0} <music21.chord.Chord E4 G#4 B4 E5>
+        {4.0} <music21.bar.Repeat direction=end times=2>
+    {176.0} <music21.stream.Measure 0 offset=176.0>
+        {0.0} <music21.key.Key of C major>
+        {0.0} <music21.chord.Chord C#4 E4 G#4 B4 C#5>
+        {2.0} <music21.chord.Chord F#4 A#4 C#5 E5 F#5>
+    {180.0} <music21.stream.Measure 0 offset=180.0>
+        {0.0} <music21.bar.Repeat direction=start>
+        {0.0} <music21.key.Key of B major>
+        {0.0} <music21.chord.Chord B4 D#5 F#5 B5>
+        {2.0} <music21.chord.Chord F#4 A#4 C#5 F#5>
+    {184.0} <music21.stream.Measure 0 offset=184.0>
+        {0.0} <music21.chord.Chord G#4 B4 D#5 G#5>
+    {188.0} <music21.stream.Measure 0 offset=188.0>
+        {0.0} <music21.chord.Chord E4 G#4 B4 E5>
+        {2.0} <music21.chord.Chord F#4 A#4 C#5 F#5>
+    {192.0} <music21.stream.Measure 0 offset=192.0>
+        {0.0} <music21.chord.Chord B4 D#5 F#5 B5>
+        {2.0} <music21.chord.Chord F#4 A4 C#5 E5 F#5>
+        {3.0} <music21.chord.Chord B4 D#5 F#5 A5 B5>
+    {196.0} <music21.stream.Measure 0 offset=196.0>
+        {0.0} <music21.chord.Chord E4 G#4 B4 E5>
+        {2.0} <music21.chord.Chord F#4 A#4 C#5 F#5>
+    {200.0} <music21.stream.Measure 0 offset=200.0>
+        {0.0} <music21.chord.Chord D#4 F#4 A#4 D#5>
+        {2.0} <music21.chord.Chord G#4 B4 D#5 G#5>
+    {204.0} <music21.stream.Measure 0 offset=204.0>
+        {0.0} <music21.chord.Chord C#4 E4 G#4 C#5>
+        {2.0} <music21.chord.Chord F#4 A#4 C#5 F#5>
+    {208.0} <music21.stream.Measure 0 offset=208.0>
+        {0.0} <music21.chord.Chord B4 D#5 F#5 B5>
+        {2.0} <music21.chord.Chord F#4 A#4 C#5 F#5>
+        {4.0} <music21.bar.Repeat direction=end times=2>
+    {212.0} <music21.stream.Measure 0 offset=212.0>
+        {0.0} <music21.key.Key of C major>
+        {0.0} <music21.chord.Chord D#4 F#4 A#4 C#5 D#5>
+        {2.0} <music21.chord.Chord G#4 B#4 D#5 F#5 G#5>
+    {216.0} <music21.stream.Measure 0 offset=216.0>
+        {0.0} <music21.bar.Repeat direction=start>
+        {0.0} <music21.key.Key of C major>
+        {0.0} <music21.chord.Chord C4 E4 G4 C5>
+        {2.0} <music21.chord.Chord G4 B4 D5 G5>
+    {220.0} <music21.stream.Measure 0 offset=220.0>
+        {0.0} <music21.chord.Chord A4 C5 E5 A5>
+    {224.0} <music21.stream.Measure 0 offset=224.0>
+        {0.0} <music21.chord.Chord F4 A4 C5 F5>
+        {2.0} <music21.chord.Chord G4 B4 D5 G5>
+    {228.0} <music21.stream.Measure 0 offset=228.0>
+        {0.0} <music21.chord.Chord C4 E4 G4 C5>
+        {2.0} <music21.chord.Chord G4 B-4 D5 F5 G5>
+        {3.0} <music21.chord.Chord C4 E4 G4 B-4 C5>
+    {232.0} <music21.stream.Measure 0 offset=232.0>
+        {0.0} <music21.chord.Chord F4 A4 C5 F5>
+        {2.0} <music21.chord.Chord G4 B4 D5 G5>
+    {236.0} <music21.stream.Measure 0 offset=236.0>
+        {0.0} <music21.chord.Chord E4 G4 B4 E5>
+        {2.0} <music21.chord.Chord A4 C5 E5 A5>
+    {240.0} <music21.stream.Measure 0 offset=240.0>
+        {0.0} <music21.chord.Chord D4 F4 A4 D5>
+        {2.0} <music21.chord.Chord G4 B4 D5 G5>
+    {244.0} <music21.stream.Measure 0 offset=244.0>
+        {0.0} <music21.chord.Chord C4 E4 G4 C5>
+        {2.0} <music21.chord.Chord G4 B4 D5 G5>
+        {4.0} <music21.bar.Repeat direction=end times=2>
