@@ -6,7 +6,7 @@ python >= 3.7
 
 ## Configure
 
-pip install music21
+pip install -r requirements.txt
 python -m music21.configure
 
 ## See
